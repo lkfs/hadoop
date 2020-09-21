@@ -24,3 +24,22 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+.idea/.gitignore
+.idea/ZeppelinRemoteNotebooks/
+.idea/artifacts/
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+pom.xml
+src/
+target/classes/META-INF/
+target/classes/core-site.xml
+target/classes/hdfs-site.xml
+target/classes/log4j.properties
+target/generated-sources/
+target/generated-test-sources/
+target/maven-archiver/
+target/maven-status/
+target/surefire-reports/
