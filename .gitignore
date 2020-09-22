@@ -32,8 +32,6 @@ hs_err_pid*
 .idea/misc.xml
 .idea/uiDesigner.xml
 .idea/vcs.xml
-pom.xml
-src/
 target/classes/META-INF/
 target/classes/core-site.xml
 target/classes/hdfs-site.xml
