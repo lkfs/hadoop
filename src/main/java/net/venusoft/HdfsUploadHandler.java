@@ -42,7 +42,7 @@ public class HdfsUploadHandler {
                 }
                 else{
                     FileInputStream inputStream = new FileInputStream(file);
-                    String target = "/input/"
+                    String target = "/input2/"
                             +file.getName().replaceFirst("\\.[a-z0-9A-Z]*?$", "")
                             +"_"
                             +p.replaceFirst(".*\\\\", "")

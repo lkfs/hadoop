@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 public class HdfsDemo {
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
         HdfsUploadHandler handler = new HdfsUploadHandler();
-        handler.upload("D:\\hadoop\\logs");
+        handler.upload("D:\\logs");
         log.info("SUCCESS");
     }
 }
