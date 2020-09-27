@@ -18,7 +18,7 @@ public class AccessCountDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         System.setProperty("HADOOP_USER_NAME", "hadoop");
         String inputPath = "hdfs://hadoop01:9000/input";
-        String outputPath = "hdfs://hadoop01:9000/output1_3";
+        String outputPath = "hdfs://hadoop01:9000/output1_5";
 
         Configuration conf = new Configuration();
         Job job2 = Job.getInstance(conf);
