@@ -1,6 +1,7 @@
 package net.venusoft.duration;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -37,11 +38,14 @@ public class AccessDurationMapper extends Mapper<LongWritable, Text, Text, IntWr
             String path = matcherRequest.group(3);
 
             log.info("+++++ requestMap.put logId:{} path:{}", logId, path);
-            requestMap.put(logId, Arrays.asList(time, path));
-            context.write(new Text(path), new IntWritable(1));
+            //requestMap.put(logId, Arrays.asList(time, path));
+
+            context.write(new Text(path), new IntWritable(RandomUtils.nextInt(1,7)));
         }
         else{
-            Matcher matcherResponse = responsePattern.matcher(line);
+            context.write(new Text(""), new IntWritable(RandomUtils.nextInt(1,7)));
+
+            /*Matcher matcherResponse = responsePattern.matcher(line);
             if(matcherResponse.find()){
                 String endTimeStr = matcherResponse.group(1);
                 String logId = matcherResponse.group(2);
@@ -57,7 +61,7 @@ public class AccessDurationMapper extends Mapper<LongWritable, Text, Text, IntWr
                     log.info("+++++ context.write path:{}", path);
                     //context.write(new Text(path), new IntWritable(seconds.intValue()));
                 }
-            }
+            }*/
         }
 
 

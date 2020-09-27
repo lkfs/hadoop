@@ -14,11 +14,11 @@ import java.io.IOException;
  * @author lk
  * @date 2020/9/21 15:51
  */
-public class AccessDuration {
+public class AccessDurationDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
-        job.setJarByClass(AccessDuration.class);
+        job.setJarByClass(AccessDurationDriver.class);
 
         job.setMapperClass(AccessDurationMapper.class);
         job.setReducerClass(AccessDurationReducer.class);
