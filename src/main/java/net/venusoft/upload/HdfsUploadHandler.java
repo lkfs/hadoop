@@ -1,4 +1,4 @@
-package net.venusoft;
+package net.venusoft.upload;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
@@ -55,6 +55,12 @@ public class HdfsUploadHandler {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
+        HdfsUploadHandler handler = new HdfsUploadHandler();
+        handler.upload("D:\\logs");
+        log.info("SUCCESS");
     }
 
 }
