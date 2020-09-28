@@ -42,15 +42,15 @@ public class HdfsUploadHandler {
                 }
                 else{
                     FileInputStream inputStream = new FileInputStream(file);
-                    String target = "/input2/"
-                            +file.getName().replaceFirst("\\.[a-z0-9A-Z]*?$", "")
-                            +"_"
+                    String target = "/input/"
                             +p.replaceFirst(".*\\\\", "")
-                            +"."
-                            +file.getName().replaceFirst("^.*\\.", "");
+                            +"_"
+                            +file.getName();
 
                     FSDataOutputStream outputStream = fs.create(new Path(target));
                     IOUtils.copyBytes(inputStream, outputStream, 4096);
+                    inputStream.close();
+                    outputStream.close();
                     log.info("upload success, source = {}, target = {}", file.getAbsolutePath(), target);
                 }
             }
@@ -60,6 +60,7 @@ public class HdfsUploadHandler {
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
         HdfsUploadHandler handler = new HdfsUploadHandler();
         handler.upload("D:\\logs");
+        handler.close();
         log.info("SUCCESS");
     }
 
