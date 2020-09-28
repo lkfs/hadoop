@@ -82,8 +82,8 @@ public class AccessDurationDriver {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
-        String inputPath = "hdfs://hadoop01:9000/input/";
-        String outputPath = "hdfs://hadoop01:9000/output1_2";
+        String inputPath = "hdfs://hadoop01:9000/input/2020-09-25_ibd-info-log.log";
+        String outputPath = "hdfs://hadoop01:9000/output1_4";
 
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
