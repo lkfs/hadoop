@@ -3,7 +3,6 @@ package net.venusoft.duration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -12,7 +11,6 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -106,15 +104,4 @@ public class AccessDurationDriver {
         job.waitForCompletion(true);
     }
 
-    /*public static void main(String[] args) {
-        String line ="2020-09-12 09:06:42.350 [1599872801818] [http-nio-8089-exec-3] INFO  com.qrqy.ibd.config.AopConfig - class:[CommonController],method:[getUnionId],path:[/common/getUnionId] took time:[532ms],response :{\"data\":\"\",\"code\":200,\"message\":\"success\",\"result\":{\"unionId\":\"oYjYhwB_nf6o9YuwTyF5Mf9rYUJU\",\"openid\":\"o5zsG5iZ_v4k8fPsBKEPDxjUOyxs\"}}";
-         Pattern responsePattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s*\\[(\\d*)\\].*path:\\[(.+?)\\] took time:\\[\\d*ms\\],response :(\\{.*\\})");
-        Matcher matcherResponse = responsePattern.matcher(line);
-        if(matcherResponse.find()){
-            log.info("success");
-        }
-        else {
-            log.info("fail");
-        }
-    }*/
 }
