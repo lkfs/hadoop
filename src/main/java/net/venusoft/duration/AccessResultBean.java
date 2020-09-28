@@ -23,6 +23,10 @@ public class AccessResultBean implements Writable {
         this.avg = avg;
     }
 
+    @Override
+    public String toString() {
+        return count + "\t" + sum + "\t" + avg;
+    }
 
     @Override
     public void write(DataOutput out) throws IOException {

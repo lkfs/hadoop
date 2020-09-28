@@ -28,7 +28,7 @@ public class AccessDurationDriver {
     public static class AccessDurationMapper extends Mapper<LongWritable, Text, Text, AccessInfoBean>{
         private Map<String, AccessInfoBean> map = new HashMap<>();
         private Pattern requestPattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s*\\[(\\d*)\\].*path:\\[(.+?)\\],request :");
-        private Pattern responsePattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s*\\[(\\d*)\\].*path:\\[(.+?)\\] took time:\\[(\\d)*ms\\],response :");
+        private Pattern responsePattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s*\\[(\\d*)\\].*path:\\[(.+?)\\] took time:\\[(\\d*)ms\\],response :");
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -85,7 +85,7 @@ public class AccessDurationDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
         String inputPath = "hdfs://hadoop01:9000/input/";
-        String outputPath = "hdfs://hadoop01:9000/output1_1";
+        String outputPath = "hdfs://hadoop01:9000/output1_2";
 
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
