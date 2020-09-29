@@ -21,7 +21,7 @@ public class AccessSortDriver {
         System.setProperty("HADOOP_USER_NAME","hadoop");
 
         String inputPath = "hdfs://hadoop01:9000/output1_4";
-        String outputPath = "hdfs://hadoop01:9000/output2_1";
+        String outputPath = "hdfs://hadoop01:9000/output2_2";
 
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);

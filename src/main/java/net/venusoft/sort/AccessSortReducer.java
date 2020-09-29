@@ -13,6 +13,8 @@ import java.io.IOException;
 public class AccessSortReducer extends Reducer<AccessSortingBean, NullWritable, AccessSortingBean, NullWritable> {
     @Override
     protected void reduce(AccessSortingBean key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
-        context.write(key, NullWritable.get());
+        for (NullWritable n : values) {
+            context.write(key, NullWritable.get());
+        }
     }
 }
