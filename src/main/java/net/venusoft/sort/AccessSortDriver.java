@@ -1,9 +1,9 @@
 package net.venusoft.sort;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSInputStream;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -30,11 +30,11 @@ public class AccessSortDriver {
         job.setMapperClass(AccessSortMapper.class);
         job.setReducerClass(AccessSortReducer.class);
 
-        job.setMapOutputKeyClass(DoubleWritable.class);
-        job.setMapOutputValueClass(Text.class);
+        job.setMapOutputKeyClass(AccessSortingBean.class);
+        job.setMapOutputValueClass(NullWritable.class);
 
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(DoubleWritable.class);
+        job.setOutputKeyClass(AccessSortingBean.class);
+        job.setOutputValueClass(NullWritable.class);
 
         FileInputFormat.addInputPath(job, new Path(inputPath));
         FileOutputFormat.setOutputPath(job, new Path(outputPath));

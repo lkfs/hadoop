@@ -1,7 +1,7 @@
 package net.venusoft.sort;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author lk
  * @date 2020/9/29 8:59
  */
-public class AccessSortMapper extends Mapper<LongWritable, Text, DoubleWritable, Text> {
+public class AccessSortMapper extends Mapper<LongWritable, Text, AccessSortingBean, NullWritable> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
@@ -22,7 +22,7 @@ public class AccessSortMapper extends Mapper<LongWritable, Text, DoubleWritable,
             int sum = Integer.parseInt(splits[2]);
             double avg = Double.parseDouble(splits[3]);
             AccessSortingBean bean = new AccessSortingBean(path, count, sum, avg);
-            context.write(new DoubleWritable(-1*avg), new Text(path));
+            context.write(bean, NullWritable.get());
         }
     }
 }

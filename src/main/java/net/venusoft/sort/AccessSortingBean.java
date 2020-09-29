@@ -1,7 +1,6 @@
 package net.venusoft.sort;
 
 import lombok.Data;
-import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
@@ -13,11 +12,14 @@ import java.io.IOException;
  * @date 2020/9/28 12:04
  */
 @Data
-public class AccessSortingBean implements Writable /*WritableComparable<AccessSortingBean>*/ {
+public class AccessSortingBean implements WritableComparable<AccessSortingBean> {
     private String path = "";
     private int count;
     private int sum;
     private double avg;
+
+    public AccessSortingBean() {
+    }
 
     public AccessSortingBean(String path, int count, int sum, double avg) {
         this.path = path;
@@ -31,17 +33,17 @@ public class AccessSortingBean implements Writable /*WritableComparable<AccessSo
         return path + "\t" + count + "\t" + sum + "\t" + avg;
     }
 
-    /*@Override
+    @Override
     public int compareTo(AccessSortingBean o) {
-        return o.avg > this.avg?1:(o.avg == this.avg?0:-1);
-    }*/
+        return o.avg > this.avg ? 1 : (o.avg == this.avg ? 0 : -1);
+    }
 
     @Override
     public void write(DataOutput out) throws IOException {
         out.writeInt(count);
         out.writeInt(sum);
         out.writeDouble(avg);
-//        out.writeUTF(path);
+        out.writeUTF(path);
     }
 
     @Override
@@ -49,7 +51,7 @@ public class AccessSortingBean implements Writable /*WritableComparable<AccessSo
         this.count = in.readInt();
         this.sum = in.readInt();
         this.avg = in.readDouble();
-//        this.path = in.readUTF();
+        this.path = in.readUTF();
     }
 
 }
